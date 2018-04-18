@@ -42,8 +42,53 @@ Player.prototype.render = function() {
 };
 
 
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(keyInput) {
+
+    //Makes player move according to keyboard keys pressed
+    switch (keyInput) {
+        case 'left':
+        this.x -= 100;
+        break;
+
+        case 'right':
+        this.x += 100;
+        break;
+
+        case 'up':
+        this.y -= 90;
+        break;
+
+        case 'down':
+        this.y += 90;
+        break;
+
+        default:
+        this.x = this.x;
+        this.y = this.y;
+    }
+
+    /*
+     * If statements check player not to go
+     * out of canvas area. 
+     */
+    if(this.x <= 0 && keyInput === 'left') {
+        this.x = 0;
+    }
+
+    if(this.x >= 400 && keyInput === 'right') {
+        this.x = 400;
+    }
+
+    if(this.y <= -50 && keyInput === 'up') {
+        this.y = -50;
+    }
+
+    if(this.y >= 400 && keyInput === 'down') {
+        this.y = 400;
+    }
+
 };
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -51,7 +96,7 @@ const enemy1 = new Enemy(-100, 60, 0);
 const enemy2 = new Enemy(-400, 145, 0);
 const enemy3 = new Enemy(-600, 225, 0);
 const allEnemies = [enemy1, enemy2, enemy3];
-const player = new Player(200, 440, 0);
+const player = new Player(200, 400, 0);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
