@@ -1,3 +1,18 @@
+html,
 body {
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    /* Image from http://idenko.co.za/black-abstract-11-background/ */
+    background: url('../images/black.jpg');
+}
+
+canvas {
+	width: 95%;
+	max-width: 920px;
+	height: 100%;
+	max-height: 1006px;
 }

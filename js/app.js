@@ -2,7 +2,7 @@
 var Enemy = function(x, y, u) {
     this.x = x;
     this.y = y;
-    this.u = Math.floor((Math.random()*100)+50);
+    this.u = Math.floor((Math.random()*200)+100);
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -13,10 +13,21 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.u*dt;
-    if(this.x > 500) {
-        this.x = -300;
-        this.u = Math.floor((Math.random()*100)+100);
+
+    //reset enemy position at the end of the canvas
+    if(this.x > 883) {
+        this.x = -100;
+        this.u = Math.floor((Math.random()*200)+100);
     }
+    
+    //set collitions
+    if((this.x <= (player.x + 45)) && (this.x >= (player.x - 45)) && (this.y === player.y)) {
+            setTimeout(function() {
+            player.x = 400;
+            player.y = 720;
+            }, 10);
+    }
+    
 };
 
 // Draw the enemy on the screen, required method for game
@@ -34,11 +45,27 @@ var Player = function(x, y, u) {
     this.sprite = 'images/char-boy.png';
 };
 
-Player.prototype.update = function(dt) {
+Player.prototype.update = function() {
+    //when player on water goes back to square one.
+    if (this.y === -27) {
+        setTimeout(function() {
+            //this in here is the global window object!!!
+            //that is why this is not working!!
+            player.x = 400;
+            player.y = 720;
+        }, 50);
+
+
+    }
 };
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+//When player loses or wins
+Player.prototype.reset = function() {
+    
 };
 
 
@@ -55,11 +82,11 @@ Player.prototype.handleInput = function(keyInput) {
         break;
 
         case 'up':
-        this.y -= 90;
+        this.y -= 83;
         break;
 
         case 'down':
-        this.y += 90;
+        this.y += 83;
         break;
 
         default:
@@ -75,16 +102,16 @@ Player.prototype.handleInput = function(keyInput) {
         this.x = 0;
     }
 
-    if(this.x >= 400 && keyInput === 'right') {
-        this.x = 400;
+    if(this.x >= 800 && keyInput === 'right') {
+        this.x = 800;
     }
 
-    if(this.y <= -50 && keyInput === 'up') {
-        this.y = -50;
+    if(this.y <= -27 && keyInput === 'up') {
+        this.y = -27;
     }
 
-    if(this.y >= 400 && keyInput === 'down') {
-        this.y = 400;
+    if(this.y >= 720 && keyInput === 'down') {
+        this.y = 720;
     }
 
 };
@@ -92,11 +119,18 @@ Player.prototype.handleInput = function(keyInput) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const enemy1 = new Enemy(-100, 60, 0);
-const enemy2 = new Enemy(-400, 145, 0);
-const enemy3 = new Enemy(-600, 225, 0);
-const allEnemies = [enemy1, enemy2, enemy3];
-const player = new Player(200, 400, 0);
+const enemy1 = new Enemy(-600, 56, 1);
+const enemy2 = new Enemy(-300, 139, 1);
+const enemy3 = new Enemy(-100, 222, 1);
+const enemy4 = new Enemy(-350, 305, 1);
+const enemy5 = new Enemy(-150, 388, 1);
+const enemy6 = new Enemy(-500, 471, 1);
+const enemy7 = new Enemy(-350, 554, 1);
+const enemy8 = new Enemy(-250, 471, 1);
+const enemy9 = new Enemy(-50, 305, 1);
+const enemy10 = new Enemy(-100, 56, 1);
+const allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, enemy10];
+const player = new Player(400, 720, 1);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
