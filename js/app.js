@@ -136,6 +136,7 @@ Player.prototype.handleInput = function(keyInput) {
 
 };
 
+
 /*---------- INSTANTIATE OBJECTS ----------*/
 const player = new Player(400, 720, 1);
 const allEnemies = [];
