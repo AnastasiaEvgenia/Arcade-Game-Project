@@ -27,7 +27,7 @@ carefull not to make any changes in file's directories. Then
 open index.html file in a browser to start playing the 
 game. 
 
-The game can also be accessef online without downloading any
+The game can also be accessed online without downloading any
 files through this link:
 https://anastasiaevgenia.github.io/Arcade-Game-Project/
 
