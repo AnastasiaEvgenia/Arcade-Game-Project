@@ -19,4 +19,16 @@ player does come in contact with the enemies he loses the game
 and has to start from square one. Uppon reaching the water
 player wins and game restarts.
 
+## Running the Game.
+
+In order to run the game from your computer, download the
+github repository folder and files in your local machine. Be
+carefull not to make any changes in file's directories. Then
+open index.html file in a browser to start playing the 
+game. 
+
+The game can also be accessef online without downloading any
+files through this link:
+https://anastasiaevgenia.github.io/Arcade-Game-Project/
+
 

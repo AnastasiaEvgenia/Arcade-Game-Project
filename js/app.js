@@ -60,9 +60,10 @@ const Player = function(x, y, u) {
 
 // When player steps on water goes back to square one.
 Player.prototype.update = function() {
+    self = this;
     if (this.y === -27) {
         setTimeout(function() {
-            player.reset();      //this.player in setTimeout() does not
+            self.reset();      //this.player in setTimeout() does not
         }, 500);                 //work!!! this is global object here!!
     }
 };
