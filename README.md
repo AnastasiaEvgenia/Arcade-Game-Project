@@ -6,7 +6,7 @@ This is a project for the Udacity Front-End Web Developer
 Nanodegree program. The objective of the project is to 
 re-create a simple arcade game.
 
-## Game Discription.
+## Game Description.
 
 The game consists of an area made of different blocks (grass,
 stone and water), a player figure and the enemies (bugs). The 
